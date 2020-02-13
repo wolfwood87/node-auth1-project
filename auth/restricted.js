@@ -1,7 +1,7 @@
-const Users = require('./user-model.js');
+const Users = require('../users/user-model.js');
 const bcrypt = require('bcryptjs');
 
-function restricted(req, res, next) {
+module.exports = function restricted(req, res, next) {
   
     const { username, password } = req.headers;
   
@@ -19,7 +19,6 @@ function restricted(req, res, next) {
           res.status(500).json({ message: 'Unexpected error' });
         });
     } else {
-      res.status(400).json({ message: 'No credentials provided' });
+      res.status(400).json({ message: 'You shall not pass!' });
     }
   } 
-  module.exports = {restricted}
