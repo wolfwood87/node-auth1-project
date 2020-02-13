@@ -4,7 +4,7 @@
   "description": "hi\r ## Topics",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/wolfwood87/node-auth1-project/issues"
   },
-  "homepage": "https://github.com/wolfwood87/node-auth1-project#readme"
+  "homepage": "https://github.com/wolfwood87/node-auth1-project#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "knex": "^0.20.9",
+    "sqlite3": "^4.1.1"
+  }
 }
