@@ -17,9 +17,9 @@ function App() {
         <UserContext.Provider value={{ state, dispatch }}>
           <Route path = "/" component={Header} />
           <Route exact path = "/" component={Welcome} />
-          <Route path = "/users" component={Users} />
+          <Route path = "/users" render={(props) => (<Users {...props}state={state}dispatch={dispatch}/>)} />
           <Route exact path = "/register" component={Register} />
-          <Route exact path = "/login" component={Login} />
+          <Route path = "/login" render={(props) => (<Login {...props} state={state}dispatch={dispatch}/>)} />
         </UserContext.Provider>
       </Router>
     </div>

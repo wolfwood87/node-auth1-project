@@ -6,5 +6,8 @@ const userRouter = require('../users/user-router.js');
 router.use('/', authRouter);
 router.use('/users', userRouter);
 
+router.get('/', (req, res) => {
+    res.json('Server live')
+})
 
 module.exports = router;

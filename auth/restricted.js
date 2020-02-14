@@ -22,3 +22,4 @@ module.exports = function restricted(req, res, next) {
       res.status(400).json({ message: 'You shall not pass!' });
     }
   } 
+  

@@ -8,6 +8,7 @@ const Users = (props) => {
     const {state, dispatch} = useContext(UserContext)
     const [logged, setLogged] = useState(false);
     useEffect(() => {
+        console.log(props.state.user)
         const data = localStorage.getItem('userState');
         console.log(data)
             const newData = JSON.parse(data)
@@ -23,9 +24,16 @@ const Users = (props) => {
                     console.log(err.message)
                 })
     }, [])
-
+    //experiments with contextapi and using consumer to store data.very important
     return (
-        <div>
+        <UserContext.Consumer>
+            {
+                
+                (apiuser) => {
+                    console.log(state.user)
+                    console.log(apiuser)
+                return (
+                    <div>
             {!logged && <h2>Must be logged in to view Users</h2>}
             {users.map(user => (
                 <User
@@ -34,6 +42,11 @@ const Users = (props) => {
                 />
             ))}
         </div>
+                )
+            }
+            }
+        </UserContext.Consumer>
+        
     )
 }
 
