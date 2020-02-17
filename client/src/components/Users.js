@@ -24,6 +24,16 @@ const Users = (props) => {
                     console.log(err.message)
                 })
     }, [])
+    // const data = (user) => ( axios
+    // .get("http://localhost:4000/api/users", {headers: user})
+    // .then(res => {
+    //     console.log(res)
+    //     setUsers(res.data)
+    //     setLogged(true)
+    // })
+    // .catch(err => {
+    //     console.log(err.message)
+    // }))
     //experiments with contextapi and using consumer to store data.very important
     return (
         <UserContext.Consumer>
@@ -32,6 +42,7 @@ const Users = (props) => {
                 (apiuser) => {
                     console.log(state.user)
                     console.log(apiuser)
+                    // {data(state.user)}
                 return (
                     <div>
             {!logged && <h2>Must be logged in to view Users</h2>}
