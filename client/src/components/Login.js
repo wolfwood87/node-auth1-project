@@ -2,10 +2,13 @@ import React, {useState, useContext} from 'react';
 import axios from "axios";
 import { Button, Form, FormGroup, Input } from "reactstrap";
 import { UserContext } from './contexts/UserContext'
+import superagent from 'superagent'
+
 const Login = (props) => {
     const [cred, setCred] = useState({username: '', password: ''});
 
     const { state, dispatch } = useContext(UserContext);
+    
 
     const handleChange = e => {
         e.preventDefault();
@@ -22,8 +25,10 @@ const Login = (props) => {
             .post("http://localhost:4000/api/login", cred)
             .then(res => {
                 const newUser = JSON.parse(res.config.data);
+                console.log(res)
                 console.log(newUser);
                 dispatch({ type: "LOGIN_SUCCESS", payload: newUser.username })
+                sessionStorage.setItem('logged', true)
                 localStorage.setItem("userState", JSON.stringify(newUser));
                 setCred({username: '', password: ''})
                 props.history.push('/')
@@ -33,7 +38,7 @@ const Login = (props) => {
                 dispatch({type: "LOGIN_FAIL", payload: err.message})
             });
     };
-    
+
 
     return (
         <div>

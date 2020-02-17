@@ -11,6 +11,14 @@ function findBy(filter) {
         .where(filter);
 }
 
+
+function findById(id) {
+    return db('users')
+        .select('id', 'username')
+        .where({ id })
+        .first();
+}
+
 function add(user) {
     return db('users')
         .insert(user, 'id')
@@ -20,11 +28,5 @@ function add(user) {
         });
 }
 
-function findById(id) {
-    return db('users')
-        .select('id', 'username')
-        .where({ id })
-        .first();
-}
 
 module.exports = {find, findBy, add, findById}

@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 
 module.exports = function restricted(req, res, next) {
   
+    console.log(req.session.logged)
     // const { username, password } = req.headers;
   
     // if (username && password) {
@@ -18,7 +19,7 @@ module.exports = function restricted(req, res, next) {
     //     .catch(error => {
     //       res.status(500).json({ message: 'Unexpected error' });
     //     });
-    if(req.session.loggedin && (req.session.loggedin === true)){
+    if(req.session.logged && (req.session.logged === true)){
       next();
     } else {
       res.status(400).json({ message: 'You shall not pass!' });

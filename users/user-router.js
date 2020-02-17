@@ -4,6 +4,8 @@ const Users = require('./user-model.js');
 const bcrypt = require('bcryptjs')
 const restricted = require('../auth/restricted.js');
 
+
+
 router.get('/', restricted, (req, res) => {
     Users.find()
         .then(users => {

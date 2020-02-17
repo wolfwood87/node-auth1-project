@@ -2,19 +2,24 @@ import React, {useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import User from './User.js';
 import {UserContext} from './contexts/UserContext.js';
+import superagent from 'superagent'
 
 const Users = (props) => {
     const [users, setUsers] = useState([{id: '', username: ''}]);
     const {state, dispatch} = useContext(UserContext)
     const [logged, setLogged] = useState(false);
+
+    
     useEffect(() => {
         console.log(props.state.user)
         const data = localStorage.getItem('userState');
+        const log = sessionStorage.getItem('logged');
+        console.log(log);
         console.log(data)
             const newData = JSON.parse(data)
-            dispatch({ type: "LOGIN_SUCCESS", payload: JSON.parse(data) });
+            // dispatch({ type: "LOGIN_SUCCESS", payload: JSON.parse(data) });
             axios
-                .get("http://localhost:4000/api/users", {headers: newData})
+                .get("http://localhost:4000/api/users")
                 .then(res => {
                     console.log(res)
                     setUsers(res.data)

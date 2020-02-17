@@ -24,7 +24,7 @@ const sessionConfig = {
     })
   }
 configureMiddleWare(server)
-server.use(session(sessionConfig));
+server.use(session(sessionConfig))
 
 server.use('/api', apiRouter);
 

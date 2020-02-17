@@ -18,11 +18,12 @@ const Register = () => {
         axios
             .post("http://localhost:4000/api/register", cred)
             .then(res => {
-                alert(res.data.message)
+                console.log(res)
+                alert(`Welcome ${res.data.username}`)
                 setCred({username: '', password: ''})
             })
             .catch(err => {
-                console.log(err)
+                console.log(err.message)
             })
     }
     return (
